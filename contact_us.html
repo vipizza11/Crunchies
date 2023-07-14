@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crunchies</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/5ae47e3fae.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1><img height="60" width="100" src="images/cruchies logo.jpg"></h1>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="home.html"><i class="fa-solid fa-house fa-lg"></i></a></li>
+            <li><a href="target_market.html"><i class="fa-solid fa-users-viewfinder fa-lg"></i></a></li>
+            <li><a href="advertising.html"><i class="fa-brands fa-adversal fa-lg"></i></a></li>
+            <li><a href="contact_us.html"><i class="fa-brands fa-telegram fa-lg"></i></a></li>
+        </ul>
+    </nav>
+    <main>
+        <form name="submit-to-google-sheet">
+            <div>
+                <label for id="fname">Firstname:</label>
+                <input type="text" id="fname" name="fname" placeholder="Joe" required>
+            </div>
+    
+            <br>
+    
+            <div>
+                <label for id="lname">Last name:</label>
+                <input type="text" id="lname" name="lname" placeholder="mama" required>
+            </div>
+    
+            <br>
+    
+            <div>
+                <label for id="mail">Email:</label>
+                <input type="email" id="mail" name="mail" placeholder="Joemama@email.com" required>
+            </div>
+    
+            <br>
+    
+            <div>
+                <label for id="pnum">Phone number:</label>
+                <input type="tel" id="pnum" name="pnum" placeholder="(+971)50 123 4567" required>
+            </div>
+    
+           
+    
+            <br>
+            <div>
+                <label for id="msg">Message</label>
+                <input type="text" id="msg" name="msg">
+            </div>
+            <br><br>
+            <button type="reset">reset</button>
+            </div>
+            <br><br>
+            <div>
+            <button type="submit">submit</button>
+            </div>
+
+        </form>
+
+          <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxZOJXZ5C39fytChPbNVmjDFLNCDGhNSTXpe-4VCWiH3O_fMEGb2dRF5LGoLavEDD-u/exec'
+            const form = document.forms['submit-to-google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+
+    </main>
+    <footer>
+        <marquee><b><p>Copywrite &copy; <script>document.write(new Date().getFullYear())</script>, Crunchies</p></b></marquee>
+    </footer>
+    
+</body>
+</html>
