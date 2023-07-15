@@ -20,6 +20,7 @@
         </ul>
     </nav>
     <main>
+        <h2 style="text-align: center;">Feedback</h2>
         <form name="submit-to-google-sheet">
             <div>
                 <label for id="fname">Firstname:</label>
@@ -53,30 +54,32 @@
             <div>
                 <label for id="msg">Message</label>
                 <input type="text" id="msg" name="msg">
-            </div>
-            <br><br>
-            <button type="reset">reset</button>
-            </div>
             <br><br>
             <div>
             <button type="submit">submit</button>
             </div>
-            
-
+            <span id="success"></span>
+            <p style="font-size: small;">Wait a couple of seconds after clicking submit</p>
         </form>
-        <p style="text-align: center ;"><b>ONLY CLICK SUBMIT ONCE OR IT WONT WORK</b></p>
           <script>
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxZOJXZ5C39fytChPbNVmjDFLNCDGhNSTXpe-4VCWiH3O_fMEGb2dRF5LGoLavEDD-u/exec'
             const form = document.forms['submit-to-google-sheet']
-          
+            const success = document.getElementById('success');
             form.addEventListener('submit', e => {
               e.preventDefault()
               fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => console.log('Success!', response))
+                .then(response => {
+                    success.innerHTML="Thank you for the Feedback";
+
+                    setTimeout(function()
+                    {
+                        success.innerHTML="";
+                    },5000)
+                    form.reset();
+                })
                 .catch(error => console.error('Error!', error.message))
             })
           </script>
-
 
     </main>
     <footer>
