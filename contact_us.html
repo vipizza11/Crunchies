@@ -20,6 +20,11 @@
         </ul>
     </nav>
     <main>
+        <style>
+            #button:active{
+                transform: scale(1.12);
+            }
+        </style>
         <h2 style="text-align: center;">Feedback</h2>
         <form name="submit-to-google-sheet">
             <div>
@@ -56,7 +61,7 @@
                 <input type="text" id="msg" name="msg">
             <br><br>
             <div>
-            <button type="submit">submit</button>
+            <button id="submit" type="submit">submit</button>
             </div>
             <span id="success"></span>
             <p style="font-size: small;">Wait a couple of seconds after clicking submit</p>
